@@ -8,59 +8,10 @@
 <body>
     <h1>Виселица!!</h1>
 
-    <script>
-        // создаем массив со словами
-        var words = [
-        "программа",
-        "макака",
-        "прекрасный",
-        "оладушек",
-        "апельсин",
-        "банан"];
+    <script defer src="./pageScript.js"></script>
 
-        // выбираем случайное слово
-        var words = words[Math.floor(Math.random() * words.length)];
-
-        // создаем пустой массив
-        var answerArray = [];
-        for (var i = 0; i < words.length; i++) {
-            answerArray[i] = "-";
-        }
-
-        var remainingLetters = words.length;
-        
-
-        // игровой цикл
-        while (remainingLetters > 0 ) {
-            // показываем состояние игры
-            alert (answerArray.join(" "));
-            // Запрашиваем вариант ответа
-            var guess = prompt("Угадайте букву или нажмите Отмена для выхода");
-            guess = guess.toLowerCase();
-            if (guess === null) {
-                // выходим из игорого цикла
-                break;
-            } else if (guess.length !== 1) {
-                alert (" Введите только одну букву");
-                
-            } else {
-
-            // обновляем состояние игры 
-                for (var j = 0; j < words.length; j ++) {
-                    if (words[j] === guess && answerArray[j] === "-") {
-                        answerArray[j] = guess;
-                        remainingLetters --;
-                    }
-                }  alert ("Осталось " + remainingLetters);
-            }       
-        
-            // конец игрового цикла
-        }
-
-        // отображаем ответ и поздравляем игрока
-        //alert ( answerArray.join(" "));
-        alert ("Отлично! Было слово " + words);
-    </script>  
+       
+     
 
 
 </body>
