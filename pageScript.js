@@ -14,10 +14,9 @@
     
     var words = selectWord(wordsList);
 
-    // создаем пустой массив
+    // заменяем слово символами
     const setupArray = (inArray) => { 
        return Array(words.length).fill("_");
-    
     }
     var answerArray = setupArray();
     
