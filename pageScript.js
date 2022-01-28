@@ -15,19 +15,14 @@
     var words = selectWord(wordsList);
 
     // создаем пустой массив
-    const setupArray = () => {
-        const inArray = []; 
-        for (var i = 0; i < words.length; i++) {
-            inArray[i] = "-";
-        }
-        return inArray;
+    const setupArray = (inArray) => { 
+       const array = Array(words.length).fill("_");
+       return array;
     }
     var answerArray = setupArray();
     
-
     var remainingLetters = words.length;
     
-
     // игровой цикл
     while (remainingLetters > 0 ) {
         // показываем состояние игры
@@ -45,7 +40,7 @@
 
         // обновляем состояние игры 
             for (var j = 0; j < words.length; j ++) {
-                if (words[j] === guess && answerArray[j] === "-") {
+                if (words[j] === guess && answerArray[j] === "_") {
                     answerArray[j] = guess;
                     remainingLetters --;
                 }
