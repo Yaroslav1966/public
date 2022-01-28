@@ -16,9 +16,9 @@
 
     // заменяем слово символами
     const setupArray = (anyLength) => { 
-       return Array(anyLength.length).fill("_");
+       return new Array(anyLength).fill("_");
     }
-    var answerArray = setupArray(words);
+    var answerArray = setupArray(words.length);
     
     var remainingLetters = words.length;
     
