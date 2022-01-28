@@ -15,10 +15,10 @@
     var words = selectWord(wordsList);
 
     // заменяем слово символами
-    const setupArray = () => { 
-       return Array(words.length).fill("_");
+    const setupArray = (anyLength) => { 
+       return Array(anyLength.length).fill("_");
     }
-    var answerArray = setupArray();
+    var answerArray = setupArray(words);
     
     var remainingLetters = words.length;
     
