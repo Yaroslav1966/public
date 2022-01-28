@@ -16,8 +16,8 @@
 
     // создаем пустой массив
     const setupArray = (inArray) => { 
-       const array = Array(words.length).fill("_");
-       return array;
+       return Array(words.length).fill("_");
+    
     }
     var answerArray = setupArray();
     
