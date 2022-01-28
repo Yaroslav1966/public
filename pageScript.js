@@ -15,7 +15,7 @@
     var words = selectWord(wordsList);
 
     // заменяем слово символами
-    const setupArray = (inArray) => { 
+    const setupArray = () => { 
        return Array(words.length).fill("_");
     }
     var answerArray = setupArray();
