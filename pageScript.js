@@ -19,7 +19,7 @@
     }
     
     const showPlayerProgress = (answer) => {
-        return (alert (answer.join(" ")));
+        alert(answer.join(" "));
     } 
     const getGuess = () => {       
         return prompt("Угадайте букву или нажмите Отмена для выхода");    
@@ -32,7 +32,7 @@
         // показываем состояние игры
         showPlayerProgress(answerArray);
         // Запрашиваем вариант ответа
-        var guess = (getGuess().toLowerCase());
+        var guess = getGuess().toLowerCase();
 
         if (guess === null) {
             // выходим из игорого цикла
