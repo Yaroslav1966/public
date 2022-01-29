@@ -11,24 +11,29 @@
     const selectWord = (wordList) =>  {
        return wordList[Math.floor(Math.random() * wordList.length)];   
     }
-    
-    var words = selectWord(wordsList);
+    var word = selectWord(wordsList);
 
     // заменяем слово символами
     const setupArray = (anyLength) => { 
        return new Array(anyLength).fill("_");
     }
-    var answerArray = setupArray(words.length);
     
-    var remainingLetters = words.length;
-    
+    const showPlayerProgress = (answer) => {
+        return (alert (answer.join(" ")));
+    } 
+    const getGuess = () => {       
+        return prompt("Угадайте букву или нажмите Отмена для выхода");    
+    }
+
+    var answerArray = setupArray(word.length);
+    var remainingLetters = word.length;
     // игровой цикл
     while (remainingLetters > 0 ) {
         // показываем состояние игры
-        alert (answerArray.join(" "));
+        showPlayerProgress(answerArray);
         // Запрашиваем вариант ответа
-        var guess = prompt("Угадайте букву или нажмите Отмена для выхода");
-        guess = guess.toLowerCase();
+        var guess = (getGuess().toLowerCase());
+
         if (guess === null) {
             // выходим из игорого цикла
             break;
@@ -38,8 +43,8 @@
         } else {
 
         // обновляем состояние игры 
-            for (var j = 0; j < words.length; j ++) {
-                if (words[j] === guess && answerArray[j] === "_") {
+            for (var j = 0; j < word.length; j ++) {
+                if (word[j] === guess && answerArray[j] === "_") {
                     answerArray[j] = guess;
                     remainingLetters --;
                 }
@@ -50,5 +55,4 @@
     }
 
     // отображаем ответ и поздравляем игрока
-    //alert ( answerArray.join(" "));
-    alert ("Отлично! Было слово " + words);
+    alert ("Отлично! Было слово " + word);
