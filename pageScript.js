@@ -26,17 +26,16 @@
     var remainingLetters = word.length;
     var outMessege = ["Введите только одну букву", "Осталось ", "Отлично! Было слово "];
     
-    const updateGameState =  (a,b,c) => {
-        for (var j = 0; j < a.length; j ++) {
-            if (a[j] === b && c[j] === "_") {
-                c[j] = b;
+    const updateGameState =  (word,guess,answerArray,) => {
+        for (var j = 0; j < word.length; j ++) {
+            if (word[j] === guess && answerArray[j] === "_") {
+                answerArray[j] = guess;
                 remainingLetters --;
             }
         }  
     }   
     // игровой цикл
-    while (remainingLetters > 0 ) {
-         
+    while (remainingLetters > 0 ) {     
         // показываем состояние игры
         alert(answerArray.join(" "));
         // Запрашиваем вариант ответа
