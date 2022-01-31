@@ -41,21 +41,16 @@
         alert(answerArray.join(" "));
         // Запрашиваем вариант ответа
         var guess = getGuess().toLowerCase();
-
         if (guess === null) {
             // выходим из игорого цикла
             break;
         } else if (guess.length > 1) {
             alert(outMessege[0]);    
         } else {
-
         // обновляем состояние игры 
             updateGameState(word, guess, answerArray); 
             alert(outMessege[1] + remainingLetters);  
-        }       
-    
-        // конец игрового цикла
+        }           
     }
-
     // отображаем ответ и поздравляем игрока
     alert(outMessege[2] + word);
