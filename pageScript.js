@@ -18,41 +18,44 @@
        return new Array(anyLength).fill("_");
     }
     
-    const showPlayerProgress = (answer) => {
-        alert(answer.join(" "));
-    } 
     const getGuess = () => {       
         return prompt("Угадайте букву или нажмите Отмена для выхода");    
     }
 
     var answerArray = setupArray(word.length);
     var remainingLetters = word.length;
+    var outMessege = ["Введите только одну букву", "Осталось ", "Отлично! Было слово "];
+    
+    const updateGameState =  (a,b,c) => {
+        for (var j = 0; j < a.length; j ++) {
+            if (a[j] === b && c[j] === "_") {
+                c[j] = b;
+                remainingLetters --;
+            }
+        }  
+    }   
     // игровой цикл
     while (remainingLetters > 0 ) {
+         
         // показываем состояние игры
-        showPlayerProgress(answerArray);
+        alert(answerArray.join(" "));
         // Запрашиваем вариант ответа
         var guess = getGuess().toLowerCase();
 
         if (guess === null) {
             // выходим из игорого цикла
             break;
-        } else if (guess.length !== 1) {
-            alert (" Введите только одну букву");
-            
+        } else if (guess.length > 1) {
+            alert(outMessege[0]);    
         } else {
 
         // обновляем состояние игры 
-            for (var j = 0; j < word.length; j ++) {
-                if (word[j] === guess && answerArray[j] === "_") {
-                    answerArray[j] = guess;
-                    remainingLetters --;
-                }
-            }  alert ("Осталось " + remainingLetters);
+            updateGameState(word, guess, answerArray); 
+            alert(outMessege[1] + remainingLetters);  
         }       
     
         // конец игрового цикла
     }
 
     // отображаем ответ и поздравляем игрока
-    alert ("Отлично! Было слово " + word);
+    alert(outMessege[2] + word);
