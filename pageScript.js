@@ -25,12 +25,14 @@
     var answerArray = setupArray(word.length);
     var remainingLetters = word.length;
     var outMessege = ["Введите только одну букву", "Осталось ", "Отлично! Было слово "];
-    
-    const updateGameState =  (word,guess,answerArray,) => {
+    const decrementRemeining = () => {
+        remainingLetters--;
+    }
+    const updateGameState =  (word,guess,answerArray,callback) => {
         for (var j = 0; j < word.length; j ++) {
             if (word[j] === guess && answerArray[j] === "_") {
                 answerArray[j] = guess;
-                remainingLetters --;
+                callback();
             }
         }  
     }   
@@ -47,7 +49,7 @@
             alert(outMessege[0]);    
         } else {
         // обновляем состояние игры 
-            updateGameState(word, guess, answerArray); 
+            updateGameState(word, guess, answerArray, decrementRemeining); 
             alert(outMessege[1] + remainingLetters);  
         }           
     }
