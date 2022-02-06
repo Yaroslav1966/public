@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>DOM</title>
+</head>
+
+<body>
+	<h1 id="heading">Привет!</h1>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+	<script>
+		var direction = "right";
+		var offset = 0;
+		var intLength = 30;
+		var clicks = 0;
+		$("#heading").offset({ left: offset, top: offset });
+
+
+		var moveHead = () => {
+			if (direction === "right") {
+				$("#heading").offset({ left: offset });
+				offset++;
+				if (offset > 400) {
+					offset = 0;
+					direction = "down";
+				}
+			}
+			else if (direction === "down") {
+				$("#heading").offset({ top: offset });
+				offset++;
+				if (offset > 400) {
+					offset = 400;
+					direction = "left";
+				}
+			}
+			else if (direction === "left") {
+				$("#heading").offset({ left: offset });
+				offset--;
+				if (offset < 0) {
+					offset = 400;
+					direction = "up";
+				}
+			}
+			else if (direction === "up") {
+				$("#heading").offset({ top: offset });
+				offset--;
+				if (offset < 0) {
+					offset = 0;
+					direction = "right";
+				}
+			}
+		}
+		var intID = setInterval(moveHead, intLength);
+		
+		$("#heading").click(function () {
+			clearInterval(intID);
+			intLength -= 5;
+			clicks++;
+			
+			if (clicks > 10) {
+				$("#heading").text("Ты крутой!!");
+			} else {
+				intID = setInterval(moveHead, intLength);
+			}
+		});
+
+
+	</script>
+
+	<script src="./button.js"></script>
+</body>
+
+</html>
