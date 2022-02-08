@@ -26,3 +26,4 @@ Car.prototype.moveRight = function () {
 
 var car1 = new Car(10, 20);
 var car2 = new Car(200, 200);
+car1.moveRight();
