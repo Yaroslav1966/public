@@ -19,7 +19,7 @@ Car.prototype.draw = function () {
 Car.prototype.moveRight = function () {
   this.x += 10;
   this.carElement.css({
-    let: this.x,
+    left: this.x,
     top: this.y
   });
 };
