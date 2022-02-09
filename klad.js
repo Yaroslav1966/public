@@ -43,16 +43,12 @@ $("#map").click(function (event) {
         clicks++;
     }
 
-
     let distance = getDistance(event, target);
-
     let distanceHint = getDistanceHint(distance);
-
     $("#distance").text(distanceHint);
 
     if (distance < 10) {
         alert("Клад найден! Сделано: " + clicks + " кликов.");
     }
-
 });
 

@@ -16,14 +16,29 @@ Car.prototype.draw = function () {
   $("body").append(this.carElement);
 };
 
-Car.prototype.moveRight = function () {
-  this.x += 10;
+Car.prototype.moveRight = function (speed,) {
+  this.x += speed = Math.floor(Math.random() * speed);
   this.carElement.css({
     left: this.x,
     top: this.y
   });
+  if (this.x === 400) {
+    clearInterval(id1)
+    clearInterval(id2)
+  }
 };
 
 var car1 = new Car(10, 20);
-var car2 = new Car(200, 200);
-car1.moveRight();
+var car2 = new Car(10, 150);
+
+
+
+var id1 = setInterval(() => {
+  car1.moveRight(3)
+}, 30);
+
+var id2 = setInterval(() => {
+  car2.moveRight(3)
+}, 30);
+
+
