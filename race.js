@@ -2,6 +2,7 @@
 const Car = function (x, y) {
   this.x = x;
   this.y = y;
+  this.intervalId = null; // Interval variable
   this.draw();
 };
 
@@ -23,13 +24,19 @@ Car.prototype.moveRight = function (speed,) {
     top: this.y
   });
   if (this.x > 450) {
-    clearInterval(id1)
+    clearInterval(id1) // Сделать только один clearInterval, что принимает id текущей машины
     clearInterval(id2)
   }
 };
 
 const car1 = new Car(10, 20);
 const car2 = new Car(10, 150);
+
+
+Car.prototype.move = () => {
+  // По принципу cosnt id1 = setInterval
+  // Создать интервал во внетреннюю переменную this.intervalId
+}
 
 const id1 = setInterval(() => {
   car1.moveRight(10)
