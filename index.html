@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>DOM</title>
+	<title>Heading offset</title>
 </head>
 
 <body>
@@ -53,12 +53,12 @@
 			}
 		}
 		var intID = setInterval(moveHead, intLength);
-		
+
 		$("#heading").click(function () {
 			clearInterval(intID);
 			intLength -= 5;
 			clicks++;
-			
+
 			if (clicks > 10) {
 				$("#heading").text("Ты крутой!!");
 			} else {
