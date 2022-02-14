@@ -1,7 +1,6 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
-
 /*var circle = function (x, y, radius, fillCirle) {
   ctx.beginPath();
   ctx.arc(x, y, radius, 0, Math.PI * 2, false);
@@ -27,14 +26,11 @@ const drawSnowman = function (x, y) {
 
 drawSnowman(150, 50)*/
 
-
 let points = [[50, 50], [50, 100], [100, 100], [100, 50], [50, 50]];
 let mysteryPoints = [[50, 50], [50, 100], [25, 120], [100, 50],
 [70, 90], [100, 90], [70, 120]];
 
-
-
-let drawPoints = function (arr) {
+let drawPoints = (arr) => {
   for (let i = 0; i < arr.length - 1; i++) {
     let point = arr[i];
     x = point[0]
