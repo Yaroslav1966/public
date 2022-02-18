@@ -25,10 +25,11 @@ const getGuess = () => {
 
 var answerArray = setupArray(word.length);
 var remainingLetters = word.length;
-var outMessege = [
-  "Введите только одну букву",
-  "Осталось ",
-  "Отлично! Было слово "];
+var outMessege = {
+  get: "Введите только одну букву",
+  remainder: "Осталось ",
+  final: "Отлично! Было слово "
+};
 
 const updateGameState = (word, guess, answerArray) => {
   var valid = false;
@@ -76,11 +77,11 @@ while (remainingLetters > 0) {
   if (guess === null) {
     break;
   } else if (guess.length > 1) {
-    alert(outMessege[0]);
+    alert(outMessege.get);
   } else {
     updateGameState(word, guess, answerArray);
-    alert(outMessege[1] + remainingLetters);
+    alert(outMessege.remainder + remainingLetters);
   }
 }
 
-alert(outMessege[2] + word);
+alert(outMessege.final + word);
