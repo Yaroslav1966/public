@@ -1,7 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-var words = [
+
+var wordsList = [
   "программа",
   "макака",
   "прекрасный",
@@ -9,33 +10,77 @@ var words = [
   "апельсин",
   "банан"];
 
-var words = words[Math.floor(Math.random() * words.length)];
+const selectWord = (wordList) => {
+  return wordList[Math.floor(Math.random() * wordList.length)];
+}
+var word = selectWord(wordsList);
 
-var answerArray = [];
-for (var i = 0; i < words.length; i++) {
-  answerArray[i] = "-";
+const setupArray = (anyLength) => {
+  return new Array(anyLength).fill("_");
 }
 
-var remainingLetters = words.length;
+const getGuess = () => {
+  return prompt("Угадайте букву или нажмите Отмена для выхода");
+}
 
-while (remainingLetters != 0) {
+var answerArray = setupArray(word.length);
+var remainingLetters = word.length;
+var outMessege = [
+  "Введите только одну букву",
+  "Осталось ",
+  "Отлично! Было слово "];
+
+const updateGameState = (word, guess, answerArray) => {
+  var valid = false;
+  for (var j = 0; j < word.length; j++) {
+    if (word[j] === guess && answerArray[j] === "_") {
+      valid = true;
+      answerArray[j] = guess;
+      remainingLetters--;
+    }
+  } if (valid === false) {
+    lineToMove(arrGallows);
+    count += 1;
+  }
+}
+
+var count = 0;
+const lineToMove = (arr) => {
+  x = arr[count][0];
+  y = arr[count][1];
+  x1 = arr[count][2];
+  y1 = arr[count][3];
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.arc(50, 50, 15, 0, Math.PI * 2)
+  ctx.moveTo(x, y)
+  ctx.lineTo(x1, y1);
+  ctx.stroke();
+}
+
+const arrGallows =
+  [[50, 65, 50, 110],
+  [50, 80, 80, 60],
+  [50, 80, 20, 60],
+  [50, 110, 20, 160],
+  [50, 110, 80, 160],
+  [100, 10, 100, 160],
+  [100, 10, 40, 10],
+  [70, 10, 100, 40],
+  [50, 10, 50, 35]];
+
+while (remainingLetters > 0) {
   alert(answerArray.join(" "));
-  var guess = prompt("Угадайте букву или нажмите Отмена для выхода");
-  guess = guess.toLowerCase();
+  var guess = getGuess().toLowerCase();
 
   if (guess === null) {
     break;
-  } if (guess.length !== 1) {
-    alert(" Введите только одну букву");
-
+  } else if (guess.length > 1) {
+    alert(outMessege[0]);
   } else {
-    for (var j = 0; j < words.length; j++) {
-      if (words[j] === guess && answerArray[j] === "-") {
-        answerArray[j] = guess;
-        remainingLetters--;
-      }
-    }
-    alert("Осталось " + remainingLetters);
+    updateGameState(word, guess, answerArray);
+    alert(outMessege[1] + remainingLetters);
   }
 }
-alert("Отлично! Было слово " + '\"' + words + '\"');
+
+alert(outMessege[2] + word);
