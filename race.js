@@ -7,7 +7,7 @@ const Car = function (x, y) {
 };
 
 Car.prototype.draw = function () {
-  const carHtml = '<img src="http://nostarch.com/images/car.png">';
+  const carHtml = '<img src="car.png">';
   this.carElement = $(carHtml);
   this.carElement.css({
     position: "absolute",
