@@ -31,7 +31,7 @@ var outMessege = {
   final: "Отлично! Было слово "
 };
 
-const updateGameState = (word, guess, answerArray) => {
+const updateGameState = (word, guess, answerArray, callBack) => {
   var valid = false;
   for (var j = 0; j < word.length; j++) {
     if (word[j] === guess && answerArray[j] === "_") {
@@ -40,8 +40,7 @@ const updateGameState = (word, guess, answerArray) => {
       remainingLetters--;
     }
   } if (valid === false) {
-    lineToMove(arrGallows);
-    count += 1;
+    callBack();
   }
 }
 
@@ -70,6 +69,11 @@ const arrGallows =
   [70, 10, 100, 40],
   [50, 10, 50, 35]];
 
+const drawMan = () => {
+  lineToMove(arrGallows);
+  count += 1;
+}
+
 while (remainingLetters > 0) {
   alert(answerArray.join(" "));
   var guess = getGuess().toLowerCase();
@@ -79,9 +83,9 @@ while (remainingLetters > 0) {
   } else if (guess.length > 1) {
     alert(outMessege.get);
   } else {
-    updateGameState(word, guess, answerArray);
+    updateGameState(word, guess, answerArray, drawMan);
     alert(outMessege.remainder + remainingLetters);
   }
 }
 
-alert(outMessege.final + word);
+alert(outMessege.final + '\"' + word + '\"');
