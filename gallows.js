@@ -88,4 +88,4 @@ while (remainingLetters > 0) {
   }
 }
 
-alert(outMessege.final + '\"' + word + '\"');
+alert(outMessege.final + '\"' + word[0].toUpperCase() + word.slice(1).toLowerCase() + '\"');
