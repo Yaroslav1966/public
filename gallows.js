@@ -82,7 +82,7 @@ while (remainingLetters > 0) {
   if (guess === null) {
     break;
   } else if (guess.length > 1) {
-    alert(outMessege.get);
+    alert(outMessage.get);
   } else {
     updateGameState(word, guess, answerArray, drawMan);
     alert(outMessage.remainder + remainingLetters);
