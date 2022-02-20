@@ -14,6 +14,7 @@ const selectWord = (wordList) => {
   return wordList[Math.floor(Math.random() * wordList.length)];
 }
 var word = selectWord(wordsList);
+var covertToUp = word[0].toUpperCase() + word.slice(1).toLowerCase();
 
 const setupArray = (anyLength) => {
   return new Array(anyLength).fill("_");
@@ -25,7 +26,7 @@ const getGuess = () => {
 
 var answerArray = setupArray(word.length);
 var remainingLetters = word.length;
-var outMessege = {
+var outMessage = {
   get: "Введите только одну букву",
   remainder: "Осталось ",
   final: "Отлично! Было слово "
@@ -84,8 +85,8 @@ while (remainingLetters > 0) {
     alert(outMessege.get);
   } else {
     updateGameState(word, guess, answerArray, drawMan);
-    alert(outMessege.remainder + remainingLetters);
+    alert(outMessage.remainder + remainingLetters);
   }
 }
 
-alert(outMessege.final + `"` + word[0].toUpperCase() + word.slice(1).toLowerCase() + `"`);
+alert(`${outMessage.final}${covertToUp}`);
