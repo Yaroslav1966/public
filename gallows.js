@@ -29,7 +29,7 @@ var remainingLetters = word.length;
 var outMessage = {
   get: "Введите только одну букву",
   remainder: "Осталось ",
-  final: "Отлично! Было слово "
+  final: "Отлично! Было слово: "
 };
 
 const updateGameState = (word, guess, answerArray, callBack) => {
@@ -89,4 +89,4 @@ while (remainingLetters > 0) {
   }
 }
 
-alert(`${outMessage.final}${covertToUp}`);
+$("#final").text(`${outMessage.final}${covertToUp}`);
