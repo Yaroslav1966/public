@@ -2,7 +2,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 
-var wordsList = [
+let wordsList = [
   "программа",
   "макака",
   "прекрасный",
@@ -13,8 +13,12 @@ var wordsList = [
 const selectWord = (wordList) => {
   return wordList[Math.floor(Math.random() * wordList.length)];
 }
-var word = selectWord(wordsList);
-var toUpLet = word[0].toUpperCase() + word.slice(1).toLowerCase();
+let word = selectWord(wordsList);
+
+const capitalize = (word) => {
+  return word[0].toUpperCase() + word.slice(1).toLowerCase()
+
+}
 
 const setupArray = (anyLength) => {
   return new Array(anyLength).fill("_");
@@ -24,17 +28,17 @@ const getGuess = () => {
   return prompt("Угадайте букву или нажмите Отмена для выхода");
 }
 
-var answerArray = setupArray(word.length);
-var remainingLetters = word.length;
-var outMessage = {
+let answerArray = setupArray(word.length);
+let remainingLetters = word.length;
+let outMessage = {
   get: "Введите только одну букву",
   remainder: "Осталось",
   final: "Отлично! Было слово:"
 };
 
 const updateGameState = (word, guess, answerArray, callBack) => {
-  var valid = false;
-  for (var j = 0; j < word.length; j++) {
+  let valid = false;
+  for (let j = 0; j < word.length; j++) {
     if (word[j] === guess && answerArray[j] === "_") {
       valid = true;
       answerArray[j] = guess;
@@ -45,7 +49,7 @@ const updateGameState = (word, guess, answerArray, callBack) => {
   }
 }
 
-var count = 0;
+let count = 0;
 const lineToMove = (arr) => {
   x = arr[count][0];
   y = arr[count][1];
@@ -77,7 +81,7 @@ const drawMan = () => {
 
 while (remainingLetters > 0) {
   alert(answerArray.join(" "));
-  var guess = getGuess().toLowerCase();
+  let guess = getGuess().toLowerCase();
 
   if (guess === null) {
     break;
@@ -89,4 +93,4 @@ while (remainingLetters > 0) {
   }
 }
 
-$("#final").text(`${outMessage.final} "${toUpLet}"`);
+$("#final").text(`${outMessage.final} "${capitalize(word)}"`);
