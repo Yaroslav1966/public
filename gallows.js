@@ -89,4 +89,4 @@ while (remainingLetters > 0) {
   }
 }
 
-$("#final").text(`${outMessage.final}" ${toUpLet}"`);
+$("#final").text(`${outMessage.final} "${toUpLet}"`);
